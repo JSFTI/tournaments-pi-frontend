@@ -18,6 +18,8 @@ import 'sweetalert2/dist/sweetalert2.css'
 
 const pinia = createPinia();
 
+const pinia = createPinia();
+
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 axios.defaults.headers.common.Accepts = 'application/json';
 if (localStorage.getItem('token'))

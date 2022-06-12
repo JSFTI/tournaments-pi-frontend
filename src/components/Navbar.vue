@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { AxiosError } from 'axios';
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
 import type { User } from '~/types';
@@ -58,7 +59,7 @@ function handleLogout() {
   localStorage.removeItem('token');
   delete axios.defaults.headers.common.Authorization;
   user.$reset();
-  router.push("/");
+  router.push('/');
 }
 </script>
 

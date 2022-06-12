@@ -3,9 +3,9 @@ import type { AxiosError } from 'axios';
 import axios from 'axios';
 import { pick } from 'lodash';
 import { useToast } from 'vue-toastification';
+import Swal from 'sweetalert2';
 import { useUser } from '~/stores/useUser';
 import type { PaginationAPI, Tournament, User } from '~/types';
-import Swal from 'sweetalert2';
 
 const user = useUser();
 const router = useRouter();
@@ -138,7 +138,7 @@ function handleShowEdit(tournament: Tournament) {
 function handleDelete(id: number) {
   Swal.fire({
     title: 'Are you sure?',
-    text: "You won't be able to revert this!",
+    text: 'You won\'t be able to revert this!',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#d33',

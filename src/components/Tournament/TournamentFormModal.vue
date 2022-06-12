@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { Tournament } from '~/types';
 import { useToast } from 'vue-toastification';
-
-const toast = useToast();
+import type { Tournament } from '~/types';
 
 const props = defineProps<{
   tournament: Tournament | null
@@ -11,6 +9,9 @@ const props = defineProps<{
 const emit = defineEmits<{
   (event: 'submit', formData: any, cb?: () => void): void
 }>();
+
+const toast = useToast();
+
 const submitting = ref(false);
 const formData = reactive<Tournament>(props.tournament ?? {
   id: null,
