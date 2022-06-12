@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import type { Tournament } from '~/types';
+import { useToast } from 'vue-toastification';
+
+const toast = useToast();
 
 const props = defineProps<{
   tournament: Tournament | null
@@ -19,6 +22,7 @@ function handleSubmit() {
   submitting.value = true;
   emit('submit', formData, () => {
     submitting.value = false;
+    formData.id ? toast.success('Tournament edit successful') : toast.success('Tournament added successful')
   });
 }
 

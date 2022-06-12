@@ -14,6 +14,7 @@ import 'vue-toastification/dist/index.css'
 import './styles/components.scss'
 import './styles/loader.scss'
 import './styles/main.css'
+import 'sweetalert2/dist/sweetalert2.css'
 
 const pinia = createPinia();
 

@@ -32,7 +32,7 @@ defineExpose({ resetForm });
       Register
     </template>
     <Input id="register--username" v-model="formState.username" label="Username" autocomplete="off" name="username" />
-    <Input id="register--email" v-model="formState.email" label="Email" name="email" />
+    <Input id="register--email" v-model="formState.email" label="Email" name="email" type="email" />
     <Input id="register--password" v-model="formState.password" type="password" label="Password" autocomplete="new-password" name="password" />
     <Input id="register--password_confirmation" v-model="formState.password_confirmation" type="password" autocomplete="off" label="Confirm Password" name="password_confirmation" />
     <template #footer>

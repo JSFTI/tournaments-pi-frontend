@@ -5,6 +5,7 @@ import { pick } from 'lodash';
 import { useToast } from 'vue-toastification';
 import { useUser } from '~/stores/useUser';
 import type { PaginationAPI, Tournament, User } from '~/types';
+import Swal from 'sweetalert2';
 
 const user = useUser();
 const router = useRouter();
@@ -63,6 +64,7 @@ function getData() {
 function handleEditProfile() {
   axios.put<any>('/me', myProfile.value)
     .then((res) => {
+      toast.success('Profile edit successful');
       localStorage.setItem('token', res.data.token);
       user.name = myProfile.value?.username ?? '';
       axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
@@ -75,6 +77,8 @@ function handleChangePassword(form: any, cb?: () => void) {
       toast.success('Password changed');
       if (cb)
         cb();
+    }).catch((res: AxiosError<any>) => {
+      toast.error(res.response?.data.message);
     });
 }
 
@@ -132,10 +136,22 @@ function handleShowEdit(tournament: Tournament) {
 }
 
 function handleDelete(id: number) {
-  axios.delete(`/tournaments/${id}`)
-    .then(() => {
-      getData();
-    });
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#8f8e8d',
+    confirmButtonText: 'Yes, delete it!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.delete(`/tournaments/${id}`)
+        .then(() => {
+          getData();
+        });
+    }
+  })
 }
 </script>
 

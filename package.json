@@ -16,6 +16,7 @@
     "lodash": "^4.17.21",
     "pinia": "^2.0.14",
     "sass": "^1.52.1",
+    "sweetalert2": "^11.4.17",
     "vue": "^3.2.33",
     "vue-router": "^4.0.15",
     "vue-skeletor": "^1.0.6",

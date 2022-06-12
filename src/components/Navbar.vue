@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { AxiosError } from 'axios';
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
 import type { User } from '~/types';
@@ -13,6 +12,7 @@ const registerModal = ref();
 
 const toast = useToast();
 const user = useUser();
+const router = useRouter()
 
 function setLogin(token: string, newUser: User) {
   localStorage.setItem('token', token);
@@ -28,6 +28,7 @@ function handleRegister(form: any) {
       showRegister.value = false;
     })
     .catch((res) => {
+      toast.error(res.response.data.message);
       if (res.response?.status === 401) {
         toast.error(res.response?.data.message, {
           timeout: 3000,
@@ -43,7 +44,8 @@ function handleLogin(form: any) {
       loginModal.value.resetForm();
       showLogin.value = false;
     })
-    .catch((res: AxiosError<any>) => {
+    .catch((res) => {
+      toast.error(res.response.data.message);
       if (res.response?.status === 401) {
         toast.error(res.response?.data.message, {
           timeout: 3000,
@@ -56,6 +58,7 @@ function handleLogout() {
   localStorage.removeItem('token');
   delete axios.defaults.headers.common.Authorization;
   user.$reset();
+  router.push("/");
 }
 </script>
 

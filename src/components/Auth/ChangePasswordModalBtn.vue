@@ -10,9 +10,14 @@ const formState = reactive({
   password_confirmation: '',
 });
 
+function resetForm() {
+  formState.oldPassword = formState.password = formState.password_confirmation = '';
+}
+
 function handleSubmit() {
   emit('submit', formState, () => {
     showModal.value = false;
+    resetForm();
   });
 }
 </script>
