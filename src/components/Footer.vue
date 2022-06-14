@@ -4,7 +4,7 @@
       Developed By Group 1 and Group 2
     </div>
     <div m="md:l-auto md:r-0 r-auto l-0">
-      <a class="btn-link" href="https://github.com/JSFTI/tournaments-pi-frontend" target="_blank">
+      <a class="btn-link" href="https://github.com/flp-13/tournaments_pi_frontend" target="_blank">
         Repository Here <span i-carbon-logo-github></span>
       </a>
     </div>
